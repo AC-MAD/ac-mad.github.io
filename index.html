@@ -1,161 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coming Soon</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Immersive Coming Soon</title>
   <style>
     :root {
-      --primary: #1e3a8a;
-      --secondary: #9333ea;
-      --accent: #14b8a6;
-      --bg: #0f172a;
-      --text: #f8fafc;
-      --muted: #64748b;
+      --bg: #0d1117;
+      --star: #e0f7fa;
+      --text: #e3f2fd;
+      --highlight: #00bcd4;
+      --glow: 0 0 10px rgba(0, 188, 212, 0.6), 0 0 30px rgba(0, 188, 212, 0.2);
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      box-sizing: border-box;
+      font-family: 'Courier New', Courier, monospace;
     }
 
     body {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: var(--text);
+      background: var(--bg);
+      overflow: hidden;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      color: var(--text);
+      position: relative;
+    }
+
+    .space {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
       overflow: hidden;
     }
 
-    .container {
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--star);
+      border-radius: 50%;
+      animation: twinkle infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    .planet {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle at 30% 30%, #26c6da, #006064);
+      border-radius: 50%;
+      bottom: 10%;
+      left: 10%;
+      box-shadow: var(--glow);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .message-box {
+      z-index: 10;
       text-align: center;
-      padding: 2rem;
-      background: rgba(15, 23, 42, 0.7);
-      border-radius: 20px;
-      box-shadow: 0 0 50px rgba(20, 184, 166, 0.5);
-      animation: fadeIn 2s ease-in-out;
+      animation: fadeIn 3s ease-in-out forwards;
     }
 
     h1 {
-      font-size: 3.5rem;
+      font-size: 3rem;
+      color: var(--highlight);
       margin-bottom: 1rem;
-      background: linear-gradient(to right, var(--accent), var(--text));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: floatText 3s ease-in-out infinite;
+      text-shadow: 0 0 15px var(--highlight);
     }
 
-    p {
+    .typed-text {
       font-size: 1.25rem;
-      color: var(--muted);
-      margin-bottom: 2rem;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      border-right: 2px solid var(--highlight);
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 6s steps(60, end) infinite, blink 0.7s step-end infinite;
     }
 
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
+    @keyframes typing {
+      0% { width: 0 }
+      50% { width: 60ch; }
+      100% { width: 0 }
     }
 
-    .time-box {
-      background: var(--bg);
-      padding: 1rem 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-    }
-
-    .time-box span {
-      display: block;
-      font-size: 2rem;
-      font-weight: bold;
-    }
-
-    .time-box small {
-      color: var(--muted);
-    }
-
-    footer {
-      margin-top: 2rem;
-      font-size: 0.875rem;
-      color: var(--muted);
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: var(--highlight); }
     }
 
     @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
-    @keyframes floatText {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>We're Launching Soon</h1>
-    <p>Our website is under construction. We’ll be here soon with our new awesome site.</p>
-    <div class="countdown">
-      <div class="time-box">
-        <span id="days">00</span>
-        <small>Days</small>
-      </div>
-      <div class="time-box">
-        <span id="hours">00</span>
-        <small>Hours</small>
-      </div>
-      <div class="time-box">
-        <span id="minutes">00</span>
-        <small>Minutes</small>
-      </div>
-      <div class="time-box">
-        <span id="seconds">00</span>
-        <small>Seconds</small>
-      </div>
-    </div>
-    <footer>
-      &copy; 2025 Chouifi.com | All rights reserved
-    </footer>
+  <div class="space" id="space"></div>
+  <div class="planet"></div>
+  <div class="message-box">
+    <h1>Coming Soon</h1>
+    <div class="typed-text" id="typed"></div>
   </div>
 
+  <canvas id="comets"></canvas>
+
   <script>
-    const endDate = new Date('2025-08-31T23:59:59').getTime();
+    // Stars
+    const space = document.getElementById('space');
+    for (let i = 0; i < 150; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+      space.appendChild(star);
+    }
 
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = endDate - now;
+    // Typing effect with loop
+    const messages = [
+      "Galaxies are aligning...",
+      "A new world is forming...",
+      "The future approaches silently...",
+      "Your journey will begin soon..."
+    ];
+    let index = 0;
+    const typed = document.getElementById("typed");
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    function typeLoop() {
+      typed.innerHTML = messages[index];
+      index = (index + 1) % messages.length;
+    }
 
-      document.getElementById("days").innerText = days < 10 ? '0' + days : days;
-      document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
-      document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
-      document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+    setInterval(typeLoop, 6000);
+    typeLoop();
 
-      if (distance < 0) {
-        document.querySelector(".countdown").innerHTML = "<p>We are live now!</p>";
+    // Comet Animation on Canvas
+    const canvas = document.getElementById('comets');
+    const ctx = canvas.getContext('2d');
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    const comets = [];
+    function createComet() {
+      return {
+        x: Math.random() * width,
+        y: -10,
+        size: Math.random() * 2 + 1,
+        speedX: Math.random() * 2 + 1,
+        speedY: Math.random() * 3 + 2,
+        alpha: 1
+      };
+    }
+
+    function drawComets() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < comets.length; i++) {
+        const c = comets[i];
+        ctx.beginPath();
+        const grad = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, c.size);
+        grad.addColorStop(0, `rgba(0, 229, 255, ${c.alpha})`);
+        grad.addColorStop(1, "transparent");
+        ctx.fillStyle = grad;
+        ctx.arc(c.x, c.y, c.size, 0, Math.PI * 2);
+        ctx.fill();
+        c.x += c.speedX;
+        c.y += c.speedY;
+        c.alpha -= 0.005;
+        if (c.alpha <= 0) comets.splice(i, 1);
       }
     }
 
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    function animate() {
+      if (Math.random() < 0.05) {
+        comets.push(createComet());
+      }
+      drawComets();
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
   </script>
 </body>
 </html>
