@@ -195,7 +195,7 @@
         <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
             
             <svg class="w-16 h-16 text-brand-accent mx-auto mb-8 opacity-50 quote-icon hide-on-load" fill="currentColor" viewBox="0 0 24 24" style="visibility: visible; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 0.5;"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path></svg><h2 class="text-3xl md:text-5xl font-serif leading-tight mb-10 quote-text hide-on-load" style="visibility: visible; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
-                "Wahrer Luxus im Bauwesen bedeutet, dass der Kunde den Prozess vergisst, weil er dem Ergebnis blind vertrauen kann."
+                "<strong>Vertrauen</strong>, darauf bauen wir."
             </h2>
             <p class="text-brand-accent tracking-widest uppercase text-sm font-semibold quote-author hide-on-load" style="visibility: visible; opacity: 1;">— Tarik Aamarouss, Geschäftsführung</p>
         </div>
@@ -230,7 +230,7 @@
                 </div>
 
                 <div class="footer-right hide-on-load" style="visibility: visible; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
-                    <h4 class="text-white font-serif text-2xl mb-8">Diskret Kontakt aufnehmen</h4>
+                    <h4 class="text-white font-serif text-2xl mb-8">Kontakt aufnehmen</h4>
                     <form class="space-y-6" onsubmit="event.preventDefault(); alert(&#39;Vielen Dank für Ihre Anfrage. Wir werden uns umgehend bei Ihnen melden.&#39;);">
                         <div class="grid grid-cols-2 gap-6">
                             <div>
@@ -255,7 +255,7 @@
             </div>
 
             <div class="border-t border-white/5 mt-20 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
-                <p>© 2024 Facility Management AAMAROUSS. Alle Rechte vorbehalten.</p>
+                <p>© 2026 Facility Management AAMAROUSS. Alle Rechte vorbehalten.</p>
                 <div class="flex gap-6 mt-4 md:mt-0">
                     <a href="file:///C:/Users/User/Desktop/Neues%20Textdokument%20(9.html#" class="hover:text-brand-accent transition-colors">Impressum</a>
                     <a href="file:///C:/Users/User/Desktop/Neues%20Textdokument%20(9.html#" class="hover:text-brand-accent transition-colors">Datenschutz</a>
